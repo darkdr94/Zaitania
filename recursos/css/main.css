@@ -1,0 +1,206 @@
+.navbar {
+  margin-bottom: 0;
+}
+.jumbotronadm{
+  background:#6E50F7;
+  color:#fff;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.jumbotron {
+  background:#6E50F7;
+  color:#fff;
+  padding:4px 0;
+}
+.divhashtag {
+  width: 90%;
+  border-radius: 5px;
+  float: right;
+}
+.divlabel{
+  width: 10%;
+  float: left;
+}
+div.avatar {
+  background-repeat: no-repeat;
+  width:100px;
+  height:100px;
+  margin-bottom: 10px;
+  border-radius:200px;    
+}
+.iconos{
+  width:120px;
+  height:120px;;
+  margin-top: 10px;
+  border-radius:300px;   
+}
+div.bandera {
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: 149px;
+  height:100px;
+  margin-top: 10px;  
+  border-style: solid;
+  border-width: 1px;
+}
+.margen{
+  margin-left: 80px;
+}
+.a{
+  background-color: #E4ECF3;
+}
+/*administrador inicio*/
+.opciones{
+   margin-bottom: 0;
+   background-color: #F5F9FB;
+}
+.btn2{
+  border:0px;
+  background-color: #fff;
+}
+.linknav{
+  color:#666;
+}
+.pdanger{
+  color: #B52424;
+}
+.jumbotronformularios{
+  background-color:#6E50F7;
+  color:#fff;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border-width: 0px;
+  padding:8px;
+}
+.link{
+  color:#fff;
+}
+.footer{
+  position: absolute;
+  bottom: 0;
+}
+.readonly{
+ background-color: #E4ECF3;
+}
+.formularios{
+  justify-content: center;
+  align-items: center;
+  background-color: #E4ECF3;
+  margin: 0px 30px 10px 30px;
+  padding: 15px 15px 15px 15px;
+  border-radius: 10px;
+  border-color:#d2d2d2;
+  border-width: 1px;
+  box-shadow:0 1px 0 #cfcfcf;
+}
+.divformulario {
+  width: 70%;
+  border-radius: 5px;
+  float: right;
+}
+.tablasadm{
+  height: 365px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/*-----------------------------------------------------------------*/
+/*Tablas de tendencias y mas buscados*/
+/*Div Celdas*/
+.tablaP{
+  height: 20px;
+  margin: -5px 0px -5px 0px;
+  overflow: hidden;
+}/*Parrafo Titulo tabla redondeado y azul*/
+.titulo_tabla{
+  background-color: #8181F7;
+  margin-right: 16px;
+  margin-top: 0px;
+  border-top-left-radius:4px;
+  border-top-right-radius: 4px;
+  height: 30px;
+}
+/*Div Contenedor del titulo*/
+.divtitulo_tabla{
+  height: 30px;
+}
+/*Contenedor Tabla tendencias inicio*/
+.tendencias {
+  height: 232px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0px 0px 10px 0px;
+}
+/*Contenedor Tabla mas buscados*/
+.buscados {
+  height: 140px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0px 0px 10px 0px;
+}
+/*TABLAS*/
+/*Tabla resultados*/
+.tablaresult{
+  margin: 10px 160px 10px 160px;
+}
+/*Divs Celdas Tabla historial*/
+.tablaHistorial{
+  margin: 0px 0px -14px 0px;
+  overflow: hidden;
+}
+/*Contenedor Tabla historial*/
+.conTablaHistorial{
+  height: 250px;
+  overflow-y: scroll;
+}
+/*Contenedor Tabla Tendencias por paises*/
+.tendenciasP{
+  height: 409px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/*Negrita*/
+.ptitulo{
+  font-weight: bold;
+}
+.pfooter{
+  color: #fff;
+  margin-top: 50px; 
+}
+/*Boton analisis*/
+.btn-analisis{
+  background:#6E50F7;
+  color:#fff;
+}
+.margenFooter{
+  margin-top: 52px;
+}
+/*Grafica*/
+.imgresult{
+  background-repeat: no-repeat;
+  height:250px;
+}
+.divimg{
+  margin: 0px 30px 20px 30px;
+  border:2px solid #666;
+}
+.divimgHistorial{
+  border:2px solid #666;
+}
+/*Espacio entre busqueda y boton*/
+.form-control{
+  margin-right: 4px;
+}
+#divloader{
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #D8D8D8;
+  position: fixed;
+  z-index: 1001;
+  opacity: 0.5;
+}
+/*mensajes*/
+.mensajes{
+  margin-top: 10px;
+  color: #2264E7;
+}

@@ -1,0 +1,59 @@
+extends ../layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios  container ")
+			center
+				h4(class="ptitulo") Crear Usuario
+	section(class="col-md-12")
+		div(class="col-sm-2")
+		div(class="col-sm-8  container formularios")
+			form(method="post" action="/home/usuario/crear" class="form-inline")
+				div(class="col-sm-11 form-group ")
+					label Nombre usuario:
+					input(type="text" class="divformulario input-md chat-input" name="nombre" id = "nombre" required)
+					br
+				div(class="col-sm-11 form-group ")
+					br
+				div(class="col-sm-11 form-group ")
+					label Username:
+					input(type="text" class="divformulario input-md chat-input" name="username" id = "username" required )
+					br
+				div(class="col-sm-11 form-group ")
+					br
+				div(class="col-sm-11 form-group ")
+					label Tipo de usuario
+					select(class="divformulario input-md chat-input" name="tipoUsuario")
+						each tipoUsuario in tipoUsuarios
+							option(value=tipoUsuario)=tipoUsuario
+				br
+				div(class="col-sm-11 form-group ")
+					br
+				div(class="col-sm-11 form-group ")
+					label Contraseña:
+					input(type="password" class="divformulario input-md chat-input" name="pass" id="pass" required pattern="[a-zA-Z0-9]+(?![^<]*>)" title="Mínimo 8 caracteres, sin espacioes en blanco")
+					br
+				div(class="col-sm-11 form-group ")
+					br
+				div(class="col-sm-11 form-group ")
+					label Confirmación contraseña:
+					input(type="password" class="divformulario input-md chat-input" name="confirmPassword" id = "confirmPassword" required pattern="[a-zA-Z0-9]+(?![^<]*>)" title="Mínimo 8 caracteres, sin espacioes en blanco")
+					br
+				if confirmacion
+					div(class="container col-sm-12 mensajes")
+						each msn in confirmacion
+							center
+								strong
+									p!= msn.msg
+				div(class="col-sm-6 form-group " )
+					br
+					center
+						button(class="btn btn-primary login-form-control " type="submit") Guardar
+				div(class="col-sm-6 form-group")
+					br
+					center
+						a(class=" btn btn-primary" href="/home/usuario/lista") Regresar 
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

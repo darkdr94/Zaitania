@@ -1,0 +1,31 @@
+doctype html
+html(lang = 'es')
+	head
+		title Galeras
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="/imgs/icon2.png" rel="icon")
+		link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet" type="text/css")
+	body
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+						div(class="navbar-header")
+							a(class="navbar-brand") Galeras
+							button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+								span(class="sr-only") Desplegar / Ocultar Menu
+								span(class="icon-bar")
+								span(class="icon-bar")
+								span(class="icon-bar")
+						div(class="collapse navbar-collapse" id="naveg")
+							ul(class="nav navbar-nav")
+								li(class="active") 
+									a(href="/homeLexicon") Inicio
+								li(class="#") 
+									a(href="http://comunidad.udistrital.edu.co/gesdatos/" class="glyphicon glyphicon-phone-alt" target="_blank") Contactenos
+							ul(class="nav navbar-nav pull-right active") 
+								center
+									br
+									a(href="/salirrevisor" class="link pull-right glyphicon glyphicon-log-out") Salir
+	block contenido

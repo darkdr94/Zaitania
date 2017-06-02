@@ -1,0 +1,149 @@
+doctype html
+html(lang = 'es')
+	head
+		title Zaitania
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="imgs/icon.png" rel="icon")
+		link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet" type="text/css")
+		link(href="/css/loading.css" rel="stylesheet" type="text/css")
+		script(src="js/loading.js")
+	body
+		div(id="divloader")
+		div(id="loader" class="loading")
+			div(class="nucleo w3-spin-reverse")
+				div(class="neutron1 color")
+				div(class="neutron2 color")
+				div(class="neutron3 color")
+			div(class="orbita1")
+			div(class="orbita1 orbita2")
+			div(class="orbita1 orbita3")
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+					div(class="navbar-header")
+						a(href="/" class="navbar-brand") Zaitania
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+							span(class="sr-only") Desplegar / Ocultar Menu
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+					div(class="collapse navbar-collapse" id="naveg")
+						ul(class="nav navbar-nav")
+							li(class=" active dropdown")
+								a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" ) Quienes Somos
+							li(class="dropdown")
+								a(href="#section3") Manual
+							li(class="dropdown")
+								a(href="regiones" target="_blank") Tendencias de otros países
+						form(method="post" action="/historial" class="navbar-form navbar-right" role="search")
+							div(class="form-group")
+								input(type="text" class="form-control" placeholder="historial" name="Personaje" required)
+							button(type="submit" class="btn btn-primary")
+								span(class="glyphicon glyphicon-search")
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Zaitania
+				p Herramienta de análisis de opinión de Tendencias en Twitter
+		section(class="col-md-9 main container")
+			if (mensaje)
+				div(class="container col-sm-12 mensajes")
+					center
+						strong(class="small")=mensaje
+					br
+			if (mensajeH)
+				div(class="container col-sm-12 mensajes")
+					center
+						strong(class="small")=mensajeH
+					br
+			article(class="clearfix")
+				div(class="col-sm-12 well a")
+					center
+						p(class="ptitulo") ¿Te gustaría saber el sentimiento que genera un personaje en Twitter?
+						p(class="text-justify") Esta herramienta te permitirá conocer la opinión respecto a un personaje que haya sido mencionado en un hashtag en Twitter. El análisis arroja el grado de favorabilidad en una escala porcentual de 0 a 100, a traves del uso del Procesamiento de Lenguaje Natural (PLN). 
+						p(class="text-justify") Podrás analizar hasta tres personajes simultáneamente y la opción de consultar los análisis anteriores sobre el personaje de tu interés. Además podrás ver las tendencias actuales de Colombia en Twitter y las de otros países de habla hispana.
+		aside(class="col-md-3 main container")
+			if buscados
+				div(class="col-sm-12 divtitulo_tabla") 
+					center
+						p(class="titulo_tabla tablaP ptitulo") Hashtags más analizados
+				div(class="col-sm-12 buscados")
+					center
+						div(class="table-responsive ")
+							table(class=" table table-striped  table-hover table-condensed table-bordered")
+								thead
+									tbody
+										each hashtag, i in buscados
+											tr
+												th
+													div(class="tablaP")
+														center
+															p(class="small")=(i+1)
+												td
+													div(class="tablaP")
+														center
+															a(href="https://twitter.com/search?q=%23#{hashtag._id}" target="_blank" class="small")##{hashtag._id}
+		section(class="col-md-9")
+			div(class="col-sm-12 well a")
+				center
+					div(class="col-sm-12") 					
+						p(class="ptitulo") A continuación ingrese los personajes a buscar
+				form(method="post" action="/analisis" class="form-inline" onsubmit="loading()")
+					div(class="col-sm-4  form-group ")
+						center
+							div(class="avatar" style="background: url(/imgs/avatar_AZUL.png)")
+							div(class="col-sm-12")
+								label(class="divlabel") #
+								input(type="text"  class = "divhashtag" name="Hashtag1" id = "hashtag1" pattern="[a-zA-ZñÑáéíóúüÁÉÍÓÚÜ0-9]+(?![^<]*>)" placeholder="Hashtag" title="El # no puede tener caracteres especiales ni espacios")
+								br
+					div(class="col-sm-4 form-group ")
+						center
+							div(class="avatar" style="background: url(/imgs/avatar_GRIS.png)")
+							div(class="col-sm-12")
+								label(class="divlabel") #
+								input(type="text" class = "divhashtag" name="Hashtag2" id = "hashtag2" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9]+(?![^<]*>)" placeholder="Hashtag" title="El # no puede tener caracteres especiales ni espacios")
+								br
+					div(class="col-sm-4 form-group")
+						center
+							div(class="avatar" style="background: url(/imgs/avatar_ROJO.png)")
+							div(class="col-sm-12")
+								label(class="divlabel") #
+								input(type="text" class = "divhashtag" name="Hashtag3" id = "hashtag3" pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9]+(?![^<]*>)" placeholder="Hashtag" title="El # no puede tener caracteres especiales ni espacios")
+								br
+					div(class="col-sm-12 form-group")
+						br
+						center
+							button(class="btn btn-analisis" type="submit") Realizar Análisis
+					br
+		aside(class="col-md-3")
+			if tendencias
+				div(class="col-sm-12 divtitulo_tabla") 
+					center
+						p(class="titulo_tabla ptitulo") Tendencias de Colombia
+				div(class="col-sm-12 tendencias") 
+					center
+						div(class="table-responsive")
+							table(class="table table-striped table-hover table-condensed table-bordered")
+								thead
+									tbody
+										each tendencia, i in tendencias
+											tr
+												th
+													div(class="tablaP")
+														center
+															p(class="small")=(i+1)
+												td
+													div(class="tablaP")
+														center
+															a(href=tendencia.url target="_blank" class="small")=tendencia.name
+		section(class="col-md-12")
+			center
+				br
+				p(class="small") Número de análisis: #{contador}	
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="/bootstrap/js/jquery.js")
+		script(src="/bootstrap/js/bootstrap.min.js")
+		script(src="/js/pace.js")

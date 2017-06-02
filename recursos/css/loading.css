@@ -1,0 +1,86 @@
+.loading{
+  display: none;
+  z-index: 1002;
+  width: 200px;
+  height:70px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin: -75px 0 0 -75px;
+  animation: spin 10s linear infinite;
+}
+.orbita1{
+  z-index: 2;
+  width: 200px;
+  height: 70px;
+  position: absolute;
+  border-radius: 50%;
+  border: 5px solid #6E50F7;
+  display: block;
+}
+.orbita2{
+  transform: rotate(60deg);
+}
+.orbita3{
+  transform: rotate(120deg);
+}
+.nucleo{
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  left: 75px;
+  position: absolute;
+  border-radius: 100px;
+}
+.color{
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  position: absolute;
+  opacity: 0.75;
+  background-color: #F88411;
+}
+.neutron1{
+  left:10px;
+}
+.neutron2{
+  top:15px;
+  left:1px;
+}
+.neutron3{
+  top:15px;
+  left:19px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.w3-spin-reverse {
+  animation:w3-spin-reverse 2s infinite linear;
+  -webkit-animation:w3-spin-reverse 2s infinite linear
+}
+@-webkit-keyframes w3-spin-reverse{
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+  }
+  100%{
+    -webkit-transform:rotate(-359deg);
+    transform:rotate(-359deg);
+    }
+  }
+@keyframes w3-spin-reverse {
+  0%{
+    -webkit-transform:rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100%{
+    -webkit-transform:rotate(-359deg);
+    transform:rotate(-359deg);
+  }
+}

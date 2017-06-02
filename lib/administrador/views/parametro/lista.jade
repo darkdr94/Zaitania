@@ -1,0 +1,36 @@
+extends ../layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios container")
+			h4(class="ptitulo") Número máximo de Tweets
+		br
+	aside(class="col-md-4 ")
+		div(class="list-group")
+			a(href="/home/usuario/editar" class=" list-group-item active") Cambiar contraseña
+			a(href="/home/parametro/lista" class=" list-group-item") Cambiar número máximo de Tweets
+			a(href="/home/llaves/lista" class=" list-group-item ") Gestionar claves
+			if (tipousuario=="superadmin")
+				a(href="/home/recursos" class=" list-group-item" ) Gestionar recursos
+				a(href="/home/usuario/lista" class=" list-group-item") Gestionar usuarios
+	section(class="col-md-8")
+		div(class="col-sm-11 container formularios")
+			form(action="/home/parametro/editar" method="post" )
+				each maxtweets in numMax
+					input(type="hidden" name = "id" value=maxtweets._id)
+					div(class="col-sm-11 form-group ")
+						label Número máximo de tweets:
+						input(type="text" class="divformulario readonly" value="#{maxtweets.n_maximo_tweet}" readonly)
+					div(class="col-sm-11")
+						center
+							button(class="btn btn-primary " type="submit") Editar
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion					
+					center
+						strong
+							p!= msm.msg
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

@@ -1,0 +1,34 @@
+extends ../layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios  container ")
+			center
+				h4(class="ptitulo") Eliminar llaves API de Twitter
+	section(class="col-md-12")
+		div(class="col-sm-2")
+		div(class="col-sm-8 formularios container")
+			form(method="post" action="/home/llaves/eliminar/p" class="form-inline")
+				input(type="hidden" name = "id" value="#{llaves.id}")
+				
+				div(class="col-sm-12 form-group")
+					label Consumer Key:
+					input(type="text" name = "consumer" class="divformulario readonly input-md chat-input" value="#{llaves.s_consumerkey}" readonly)
+				div(class="col-sm-12 form-group ")
+					br
+				div(class="col-sm-12 form-group ")
+					label  Consumer Secret:
+					input(type="text" name = "s_consumersecret" class="divformulario readonly input-md chat-input" value="#{llaves.s_consumersecret}" readonly)
+					br
+				div(class="col-sm-6 form-group " )
+					br
+					center
+						button(class="btn btn-primary login-form-control " type="submit") Eliminar
+				div(class="col-sm-6 form-group")
+					br
+					center
+						a(class=" btn btn-primary" href="/home/llaves/lista") Regresar 
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

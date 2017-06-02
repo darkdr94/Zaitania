@@ -1,0 +1,82 @@
+doctype html
+html(lang = 'es')
+	head
+		title Zaitania
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="/imgs/icon.png" rel="icon")
+		link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet" type="text/css")
+	body
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+					div(class="navbar-header")
+						a(href="/" class="navbar-brand") Zaitania
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+							span(class="sr-only") Desplegar / Ocultar Menu
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+					div(class="collapse navbar-collapse" id="naveg")
+						ul(class="nav navbar-nav")
+							li(class="dropdown")
+								a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" ) Quienes Somos
+							li(class="dropdown")
+								a(href="#section3") Manual
+						form(method="post" action="/historial" class="navbar-form navbar-right" role="search")
+							div(class="form-group")
+								input(type="text" class="form-control" placeholder="historial" name="Personaje" required)
+								
+							button(type="submit" class="btn btn-primary")
+								span(class="glyphicon glyphicon-search")
+							if (mensajeH)
+								div(class="alert alert-danger alert-dismissable fade in")
+									br
+									a(href="#" class="close" data-dismiss="alert" aria-label="close") ×
+									strong
+										p=mensajeH
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Zaitania
+				p Herramienta de análisis de opinión de Tendencias en Twitter
+		section(class="col-md-8")
+			div(class="container col-sm-12")
+				center
+					p(class="ptitulo") Búsqueda de Tendencias de Twitter por paises.
+					p(class="ptitulo") Seleccione un país
+				each pais in paises
+					div(class="col-sm-3")
+						center
+							div(class="bandera" style="background: url(/imgs/"+pais.bandera+".png)")
+							a(href="/regiones/"+pais.n_woeid)=pais.s_pais
+
+		section(class="col-md-4")											
+			div(class="form-group col-sm-12")
+				if tendencias
+					div(class="col-sm-12 divtitulo_tabla") 
+						center
+							p(class="titulo_tabla ptitulo") Tendencias de #{nombrePais}
+					div(class="col-sm-12 tendenciasP")
+						div(class="table-responsive")
+							table(class="table table-bordered table-striped table-hover table-condensed")
+								thead
+									tbody
+										each tendencia, i in tendencias
+											tr
+												td
+													div(class="tablaHistorial")
+														center
+															p(class="small")=(i+1)
+												td
+													div(class="tablaHistorial")
+														center
+															a(href=tendencia.url target="_blank")=tendencia.name
+		section(class="col-md-12")
+			center
+				br
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="bootstrap/js/jquery.js")
+		script(src="bootstrap/js/bootstrap.min.js")

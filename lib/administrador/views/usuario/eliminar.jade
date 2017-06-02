@@ -1,0 +1,35 @@
+extends ../layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios container ")
+			center
+				h4(class="ptitulo") Eliminar usuario
+	section(class="col-md-12")
+		div(class="col-sm-2")
+		div(class="col-sm-8 container formularios")
+				form(method="post" action="/home/usuario/eliminar/p" class="form-inline")
+					input(type="hidden" name = "idusuario" value="#{usuarioAdm._id}")
+
+					div(class="col-sm-11 form-group")
+						label Usuario:
+						input(type="text" class=" divformulario input-md col-sm-4 readonly chat-input" name="nombre" id = "nombre" value="#{usuarioAdm.s_name}" readonly)
+						br
+					div(class="col-sm-11 form-group ")
+						br
+					div(class="col-sm-11 form-group ")
+						label Username:
+						input(type="text" class=" input-md divformulario col-sm-4 readonly chat-input" name="username" id = "username" value="#{usuarioAdm.s_user_name}" readonly)
+						br
+					div(class="col-sm-6 form-group " )
+						br
+						center
+							button(class="btn btn-primary login-form-control " type="submit") Eliminar
+					div(class="col-sm-6 form-group")
+						br
+						center
+							a(class=" btn btn-primary" href="/home/usuario/lista") Regresar 
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

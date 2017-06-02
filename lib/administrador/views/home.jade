@@ -1,0 +1,33 @@
+extends ./layout.jade
+block contenido
+	section(class="col-md-12 jumbotron")
+		div(class="col-sm-1 container margen")
+			div(class="iconos" style="background: url(/imgs/icon.png)")
+		div(class="col-sm-8 container margen ")
+			h1 Zaitania
+			p Herramienta de análisis de opinión de Tendencias en Twitter
+	aside(class="col-md-4 ")
+		div(class="list-group")
+			a(href="/home/usuario/editar" class=" list-group-item active") Cambiar contraseña
+			a(href="/home/parametro/lista" class=" list-group-item") Cambiar número máximo de Tweets
+			a(href="/home/llaves/lista" class=" list-group-item ") Gestionar claves
+			if (tipousuario=="superadmin")
+				a(href="/home/recursos" class=" list-group-item" ) Gestionar recursos
+				a(href="/home/usuario/lista" class=" list-group-item") Gestionar usuarios
+	section(class="col-md-8 ")
+		article(class="clearfix")
+			div(class="col-sm-12 well a")
+				center
+					p(class="ptitulo") Administracción del sistema
+					p(class="text-justify") Gestione los recursos del sistema, estos seran necesarios para que la aplicación funcione correctamente, por tanto no ingrese datos falsos al aplicativo, las claves del API de twitter deben estar en funcionamiento, verifique bien sus cambios.
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion					
+					center
+						strong
+							p!= msm
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

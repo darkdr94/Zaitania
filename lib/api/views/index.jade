@@ -1,0 +1,46 @@
+doctype html
+html(lang = 'es')
+	head
+		title Galeras
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="/imgs/icon2.png" rel="icon")
+		link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet" type="text/css")
+	body
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+						div(class="navbar-header")
+							a(href="/index" class="navbar-brand") Galeras
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon2.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Galeras 
+				p Lexicón en Español
+		aside(class="col-md-4 ")
+			div(class="list-group")
+				a(href="/loginRevisor" class=" list-group-item active") Iniciar sesión
+				a(href="/" class=" list-group-item ") Zaitania: Herramienta para el análisis de opinión
+				a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" class=" list-group-item ") Quienes Somos
+		section(class="col-md-8 main container")
+			article(class="clearfix")
+				div(class="col-sm-12 well a")
+					center
+						p(class="ptitulo") Galeras: Lexicón en español para el análisis de opinión 
+						p(class="text-justify") Este lexicón fue hecho con el fin de realizar análisis de opinión o también llamada mineria de opinión.
+						p(class="text-justify") El lexicón cuenta con las clasificaciones de Positivo, negativo y neutral, además cuenta con una serie de adverbios de negación (modificadores) y  adverbios de cantidad (cuantificadores) que ayudan a mejorar los análisis realizados.
+						p(class="text-justify") Es usado por la aplicación Zaitania que realiza análisis de opinión basada en Twitter. 
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion					
+					center
+						strong
+							p(class="mensajes")!= msm
+		section(class="col-md-12 footer")
+			center
+				br
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="/bootstrap/js/jquery.js")
+		script(src="/bootstrap/js/bootstrap.min.js")

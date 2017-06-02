@@ -1,0 +1,61 @@
+doctype html
+html(lang = 'es')
+	head
+		title Zaitania
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="imgs/icon.png" rel="icon")
+		link(href="/bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="/css/main.css" rel="stylesheet" type="text/css")
+	body
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+						div(class="navbar-header")
+							a(href="/" class="navbar-brand") Zaitania
+							button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+								span(class="sr-only") Desplegar / Ocultar Menu
+								span(class="icon-bar")
+								span(class="icon-bar")
+								span(class="icon-bar")
+						div(class="collapse navbar-collapse" id="naveg")
+							ul(class="nav navbar-nav")
+								li(class="active") 
+									a(href="/login") Login
+								li(class="dropdown")
+									a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" ) Quienes Somos
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Zaitania
+				p Herramienta de análisis de opinión de Tendencias en Twitter
+		aside(class="col-md-4")
+			div(class="")
+		section(class="col-md-4 main container")
+			div(class="col-sm-12")
+				div(class="well a")
+					center
+						p Login Administrador
+					form(action="/login" method="post"  role="login")
+						div
+							label(class="glyphicon glyphicon-user divlabel ")
+							input(type="text" class="divhashtag" placeholder="Usuario" name="username" required)
+							br
+						br
+						div
+							label(class="glyphicon glyphicon-lock divlabel")
+							input(type="password" class=" divhashtag" placeholder="Contraseña" name="password" required)
+							br
+						br
+						div(class="login-wrapper")
+							button(type="submit" class="btn  btn-primary  btn-block login-form-control") Login
+				if (mensaje)
+					div(class="container col-sm-12 mensajes")
+						center
+							strong(class="small")=mensaje
+		section(class="col-md-12 footer")
+			center
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="bootstrap/js/jquery.js")
+		script(src="bootstrap/js/bootstrap.min.js")

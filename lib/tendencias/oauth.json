@@ -1,0 +1,4 @@
+{
+	"token_type": "bearer",
+	"access_token": "" //access token es un codigo proporcionado a los desarrolladores de Twitter cuando crean una aplicación
+}

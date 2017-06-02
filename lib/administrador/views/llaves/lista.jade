@@ -1,0 +1,69 @@
+extends ../layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-8 jumbotronformularios container")
+			h4(class="ptitulo") Gestionar claves del API de Twitter
+		div(class="col-sm-3 jumbotronformularios container")
+			h4
+				a(href="/home/llaves/crear" class="link pull-right" ) Agregar
+	aside(class="col-md-4 ")
+		div(class="list-group")
+			a(href="/home/usuario/editar" class=" list-group-item active") Cambiar contraseña
+			a(href="/home/parametro/lista" class=" list-group-item") Cambiar número máximo de Tweets
+			a(href="/home/llaves/lista" class=" list-group-item ") Gestionar claves
+			if (tipousuario=="superadmin")
+				a(href="/home/recursos" class=" list-group-item" ) Gestionar recursos
+				a(href="/home/usuario/lista" class=" list-group-item") Gestionar usuarios
+
+	section(class="col-md-8")
+		div(class="form-group col-sm-12 container")
+			div(class="table-responsive")
+				table(class="table table-bordered table-hover table-condensed")
+					thead
+						tr(class="titulo_tabla")
+							th
+								div(class="tablaP")
+									center
+										p(class="small") Consumer Key
+							th
+								div(class="tablaP")
+									center
+										p(class="small") Consumer Secret
+							th
+							th
+					tbody
+						each llave in llaves
+								tr
+									form(method="post" action="/home/llaves/editar" class="form-inline")
+										input(type="hidden" name = "id" value=llave._id)
+										td
+											center
+												div(class="tablaP")
+													p(class="small")=llave.s_consumerkey
+													input(type="hidden" name = "consumer" value=llave.s_consumerkey)
+										td
+											center
+												div(class="tablaP")
+													p(class="small")=llave.s_consumersecret
+													input(type="hidden" name = "consumersecret" value=llave.s_consumersecret)
+										td 
+											div(class="tablaP")
+												center
+													button(class="btn2" type="submit" ) Editar
+									form(method="post" action="/home/llaves/eliminar" class="form-inline")
+										input(type="hidden" name = "idllave" value=llave._id)
+										td
+											div(class="tablaP")
+												center
+													button(class="btn2" type="submit") Eliminar
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion					
+					center
+						strong
+							p!= msm.msg
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

@@ -1,0 +1,107 @@
+doctype html
+html(lang = 'es')
+	head
+		title Zaitania
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="imgs/icon.png" rel="icon")
+		link(href="bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="css/main.css" rel="stylesheet" type="text/css")
+		script(src="js/graficas.js")
+		script(src="js/highcharts.js")
+		script(src="js/exporting.js")
+	body(onload="graficarHistorial('#{nombres}','#{fechas}','#{porcentajes}')")
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+					div(class="navbar-header")
+						a(href="/" class="navbar-brand") Zaitania
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+							span(class="sr-only") Desplegar / Ocultar Menu
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+					div(class="collapse navbar-collapse" id="naveg")
+						ul(class="nav navbar-nav")
+							li(class="dropdown")
+								a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" ) Quienes Somos
+							li(class="dropdown")
+								a(href="#section3") Manual
+							li(class="dropdown")
+								a(href="regiones" target="_blank") Tendencias de otros países
+						form(method="post" action="/historial" class="navbar-form navbar-right" role="search")
+							div(class="form-group")
+								input(type="text" class="form-control" placeholder="historial" name="Personaje" required)
+							button(type="submit" class="btn btn-primary")
+								span(class="glyphicon glyphicon-search")
+							if (mensajeH)
+								div(class="alert alert-danger alert-dismissable fade in")
+									br
+									a(href="#" class="close" data-dismiss="alert" aria-label="close") ×
+									strong
+										p=mensajeH
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Zaitania
+				p Herramienta de análisis de opinión de Tendencias en Twitter
+		section(class="col-md-12")
+			div(class="col-sm-12")
+				center
+					h3
+						label(class="labelresults")  Registros de búsqueda:    #
+						label(class="hastagresults")
+							p=hashtag
+			br
+			div(class="form-group col-sm-5")
+				div(class="table-responsive conTablaHistorial")
+					table(class="table table-bordered table-hover table-condensed")
+						thead
+							tr(class="active info")
+								th 
+									div(class="tablaHistorial")
+										center
+											p(class="small") Fecha análisis
+								th
+									div(class="tablaHistorial")
+										center
+											p(class="small") Tweets descargados
+								th
+									div(class="tablaHistorial")
+										center
+											p(class="small") Frases análizadas
+								th
+									div(class="tablaHistorial")
+										center
+											p(class="small") Favorabilidad (%)
+							tbody
+								each pesonajes in historial
+									tr
+										td
+											div(class="tablaHistorial")
+												center
+													p(class="small")=pesonajes.s_fecha
+										td
+											div(class="tablaHistorial")
+												center
+													p(class="small")=pesonajes.n_tweets_descargados
+										td 
+											div(class="tablaHistorial")
+												center
+													p(class="small")=pesonajes.d_resultados.n_num_analisis
+										td
+											div(class="tablaHistorial")
+												center
+													p(class="small")=pesonajes.d_resultados.n_favorabilidad
+			div(class="col-sm-7 form-group" )
+				div(class="col-sm-12 divimgHistorial" )
+					div(id="#{nombresID}" class="imgresult")
+		
+		section(class="col-md-12")
+			center
+				br
+				p(class="small") Número de análisis: #{contador}	
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="bootstrap/js/jquery.js")
+		script(src="bootstrap/js/bootstrap.min.js")

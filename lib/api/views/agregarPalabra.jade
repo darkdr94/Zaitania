@@ -1,0 +1,40 @@
+extends ./layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios container ")
+			center
+				h4(class="ptitulo") Agregar palabras al lexicón V#{version}
+	section(class="col-md-12")
+		div(class="col-sm-2")
+		div(class="col-sm-8 formularios container")
+			article(class="clearfix")
+				div(class="col-sm-12 a")
+					center
+						p(class="ptitulo") Escriba las palabras separadas por un ";" y seleccione su polaridad
+						br
+			form(method="post" action="/homeLexicon/lexicon/agregar" class="form-inline")
+				div(class="col-sm-12")
+					label(class="col-sm-3") Palabra:
+					input(type="text" class="input-md chat-input col-sm-9" name="palabra" required pattern="[a-zñáéíóúü;]{1,50}" placeholder="palabra" title="la palabra debe estar en minusculas y no contener números, caracteres especiales ni espacios en blanco")
+				div(class="col-sm-11 form-group ")
+					br
+				div(class="col-sm-12")
+					label(class="col-sm-3") Polaridad:
+					select(name= "polaridad")
+						each polaridad in polaridades
+							option(value= polaridad)=polaridad
+					input(type="hidden" name="version" value=version)
+					br
+				div(class="col-sm-12 form-group" )
+					br
+					div(class="col-sm-6")
+						center
+							button(class="btn btn-primary login-form-control " type="submit") Guardar
+					div(class="col-sm-6")
+						center
+							a(class=" btn btn-primary" href="/homeLexicon/lexicon/" + version) Regresar
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

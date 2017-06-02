@@ -1,0 +1,56 @@
+extends ./layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios container ")
+				h4(class="ptitulo") Gestionar recursos léxicos
+	aside(class="col-md-4 ")
+		div(class="list-group")
+			a(href="/home/usuario/editar" class=" list-group-item active") Cambiar contraseña
+			a(href="/home/parametro/lista" class=" list-group-item") Cambiar número máximo de Tweets
+			a(href="/home/llaves/lista" class=" list-group-item ") Gestionar claves API de Twitter
+			if (tipousuario=="superadmin")
+				a(href="/home/recursos" class=" list-group-item" ) Gestionar recursos 
+				a(href="/home/usuario/lista" class=" list-group-item") Gestionar usuarios
+
+	section(class="col-md-8")
+		div(class="col-sm-11 container formularios")
+			article(class="clearfix")
+			div(class="col-sm-12 a")
+				center
+					p(class="ptitulo") Crear Lexicón
+					p(class="text-justify") A continuación seleccione la versión del lexicón a cargar, recuerde que esta será la usada por la herramienta para la asignación de polaridades en el análisis 
+			form(action="/home/recursos/crear" method="post" )
+				div(class="col-sm-2")
+				div(class="col-sm-8")
+					center
+						label Versión lexicón
+						select(name="version" class="divformulario") 
+							each version in versiones
+								option(value=version.n_version)=version.n_version
+				div(class="col-sm-12")
+					br
+					center
+						button(class="btn btn-primary " type="submit") Crear Lexicón
+						br
+		div(class="col-sm-11 container formularios")
+			article(class="clearfix")
+			div(class="col-sm-12 a")
+				center
+					p(class="ptitulo") Crear Stopwords
+					p(class="text-justify") A continuación seleccione la opción "Crear Stopwords", recuerde que la lista generada será la usada por la herramienta para la eliminación de palabras vacias en el análisis 
+			form(action="/home/recursos/crearStopwords" method="post" )
+					div(class="col-sm-12")
+						center
+							button(class="btn btn-primary " type="submit") Crear Stopwords
+						br
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion					
+					center
+						strong
+							p!= msm	
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

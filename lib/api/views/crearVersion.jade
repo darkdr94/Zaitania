@@ -1,0 +1,32 @@
+extends ./layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-12 jumbotronformularios container ")
+			center
+				h4(class="ptitulo") Crear nueva versión del lexicón Galeras
+	section(class="col-md-12")
+		div(class="col-sm-2")
+		div(class="col-sm-8 container formularios")
+			form(method="post" action="/homeLexicon/crearVersiones/p" class="form-inline")
+				div(class="col-sm-12")
+					label(class="col-sm-4") Copiar de la versión:
+					select(class="col-sm-2" name="version")
+						each version in versiones
+							option(value=version.version)=version.n_version
+					br
+				div(class="col-sm-12")
+					label(class="col-sm-4") Descripción:
+					textarea(class="col-sm-4" name="descripcion" required)
+				div(class="col-sm-6 form-group " )
+					br
+					center
+						button(class="btn btn-primary login-form-control " type="submit") Guardar
+				div(class="col-sm-6 form-group")
+					br
+					center
+						a(class=" btn btn-primary" href="/homeLexicon") Regresar 
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")

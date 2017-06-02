@@ -1,0 +1,81 @@
+doctype html
+html(lang = 'es')
+	head
+		title Zaitania
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+		link(href="imgs/icon.png" rel="icon")
+		link(href="bootstrap/css/bootstrap.min.css" rel="stylesheet")
+		link(href="css/main.css" rel="stylesheet" type="text/css")
+		script(src="js/graficas.js")
+		script(src="js/highcharts.js")
+		script(src="js/exporting.js")
+	body(onload="graficarHistorial('#{nombres}','#{fechas}','#{porcentajes}')")
+		header
+			nav(class="navbar navbar-inverse navbar-static-top" role="navigation")
+				div(class="container")
+					div(class="navbar-header")
+						a(href="/" class="navbar-brand") Zaitania
+						button(type="button" class="navbar-toggle collapsed" data-toggle="collapse"  data-target="#naveg")
+							span(class="sr-only") Desplegar / Ocultar Menu
+							span(class="icon-bar")
+							span(class="icon-bar")
+							span(class="icon-bar")
+					div(class="collapse navbar-collapse" id="naveg")
+						ul(class="nav navbar-nav")
+							li(class="dropdown")
+								a(href="http://comunidad.udistrital.edu.co/gesdatos/" target="_blank" ) Quienes Somos
+							li(class="dropdown")
+								a(href="#section3") Manual
+							li(class="dropdown")
+								a(href="regiones" target="_blank") Tendencias de otros países
+						form(method="post" action="/historial" class="navbar-form navbar-right" role="search")
+							div(class="form-group")
+								input(type="text" class="form-control" placeholder="historial" name="Personaje" required)
+							button(type="submit" class="btn btn-primary")
+								span(class="glyphicon glyphicon-search")
+							if (mensajeH)
+								div(class="alert alert-danger alert-dismissable fade in")
+									br
+									a(href="#" class="close" data-dismiss="alert" aria-label="close") ×
+									strong
+										p=mensajeH
+		section(class="col-md-12 jumbotron")
+			div(class="col-sm-1 container margen")
+				div(class="iconos" style="background: url(/imgs/icon.png)")
+			div(class="col-sm-8 container margen ")
+				h1 Zaitania
+				p Herramienta de análisis de opinión de Tendencias en Twitter
+		section(class="col-md-9")
+			each nombreDIV in nombresID
+				div(class="col-sm-12" )
+					div(class="form-group divimg")
+						div(id="#{nombreDIV}" class="imgresult")
+		aside(class="col-md-3")
+			if tendencias
+				div(class="col-sm-12 divtitulo_tabla") 
+					center
+						p(class="titulo_tabla ptitulo") Tendencias de Colombia
+				div(class="col-sm-12 tendencias") 
+					center
+						div(class="table-responsive")
+							table(class="table table-striped table-hover table-condensed table-bordered")
+								thead
+									tbody
+										each tendencia, i in tendencias
+											tr
+												th
+													div(class="tablaP")
+														center
+															p(class="small")=(i+1)
+												td
+													div(class="tablaP")
+														center
+															a(href=tendencia.url target="_blank" class="small")=tendencia.name
+		section(class="col-md-12")
+			center
+				br
+				p(class="small") Número de análisis: #{contador}	
+				p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+		script(src="bootstrap/js/jquery.js")
+		script(src="bootstrap/js/bootstrap.min.js")

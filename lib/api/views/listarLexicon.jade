@@ -1,0 +1,83 @@
+extends ./layout.jade
+block contenido
+	section(class="col-md-12 jumbotronformularios")
+		div(class="col-sm-8  jumbotronformularios container")
+			h4(class="ptitulo") Gestionar lexicon V#{versiones}
+		if versiones != 0
+			div(class="col-sm-3  jumbotronformularios container")
+				h4
+					a(href="/homeLexicon/lexicon/agregar/#{versiones}" class="link pull-right" ) Agregar palabra
+	aside(class="col-md-4 ")
+		div(class="list-group")
+			a(href="/homeLexicon/usuariolexicon/password" class=" list-group-item active") Cambiar contraseña
+			a(href="/homeLexicon/crearVersiones" class=" list-group-item") Crear nueva versión del lexicón
+		if confirmacion
+			div(class="container col-sm-12")
+				each msm in confirmacion
+					center
+						strong
+							p(class="mensajes small")!= msm
+
+	section(class="col-md-8")
+		if versiones != 0
+			article(class="clearfix")
+				div(class="col-sm-12 a well")
+					center
+						p(class="ptitulo mensajes") Si desea eliminar palabras tenga en cuenta que no se pedira confirmación, por tanto revise bien antes de hacerlo
+		div(class="form-group col-sm-12 container")
+			div(class="table-responsive tablasadm")
+				table(class="table table-bordered")
+					thead
+						tr(class="titulo_tabla")
+							th 
+								center
+									p(class="small") No
+							th
+								center
+									p(class="small") Palabra
+							th
+								center
+									p(class="small") Polaridad
+							if versiones != 0
+								th
+									center
+								th
+									center
+					tbody
+						each palabra, i in palabras
+								tr
+									form(method="post" action="/homeLexicon/lexicon/editar" class="form-inline")
+										td
+											div(class="tablaP")
+												center
+													p(class="small")=i+1
+										td
+											div(class="tablaP")
+												center
+													p(class="small")=palabra.s_palabra
+													input(type="hidden" name = "palabra" value=palabra.s_palabra)
+													input(type="hidden" name = "version" value=versiones)
+										td
+											div(class="tablaP")
+												center
+													p(class="small")=palabra.s_polaridad
+													input(type="hidden" name = "polaridad" value=palabra.s_polaridad)
+										if versiones != 0
+											td
+												div(class="tablaP")
+													center
+														button(class="btn2" type="submit" ) Editar
+									if versiones != 0
+										form(method="post" action="/homeLexicon/lexicon/eliminar" class="form-inline")
+											input(type="hidden" name = "idpalabra" value=palabra.s_palabra)
+											input(type="hidden" name = "version" value=versiones)
+											input(type="hidden" name = "idpolaridad" value=palabra.s_polaridad)
+											td
+												div(class="tablaP")
+													center
+														button(class="btn2" type="submit") Eliminar
+	section(class="col-md-12 footer")
+		center
+			p(class="small") © 2017 Copyright Grupo de Investigación Gesdatos - Universidad Distrital Francisco José de Caldas
+	script(src="/bootstrap/js/jquery.js")
+	script(src="/bootstrap/js/bootstrap.min.js")
